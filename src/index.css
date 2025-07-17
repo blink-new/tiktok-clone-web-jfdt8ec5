@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 348 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 180 100% 47%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 180 100% 47%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 348 100% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+
+    font-family: Inter, sans-serif;
+  }
+  
+  html, body, #root {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .tiktok-gradient {
+    background: linear-gradient(45deg, #FF0050, #00F2EA);
+  }
+  
+  .video-container {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+  
+  .video-item {
+    scroll-snap-align: start;
+  }
+
+  /* Enhanced animations and effects */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgb(255 0 80 / 30%); }
+    50% { box-shadow: 0 0 30px rgb(0 242 234 / 50%); }
+  }
+
+  @keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .rainbow-animation {
+    animation: rainbow 3s linear infinite;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(17 24 39 / 50%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #FF0050, #00F2EA);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #e6004a, #00d4c7);
+  }
+
+  /* Enhanced button hover effects */
+  .btn-glow:hover {
+    box-shadow: 0 0 20px rgb(255 0 80 / 40%);
+    transform: translateY(-2px);
+  }
+
+  .btn-bounce:hover {
+    animation: bounce 0.6s ease-in-out;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 60%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    80% { transform: translateY(-5px); }
+  }
+
+  /* Glassmorphism effects */
+  .glass {
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgb(255 255 255 / 20%);
+  }
+
+  .glass-dark {
+    background: rgb(0 0 0 / 30%);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgb(255 255 255 / 10%);
+  }
+
+  /* Gradient text effects */
+  .gradient-text {
+    background: linear-gradient(45deg, #FF0050, #00F2EA, #FFD700);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Neon glow effects */
+  .neon-pink {
+    text-shadow: 0 0 10px #FF0050, 0 0 20px #FF0050, 0 0 30px #FF0050;
+  }
+
+  .neon-cyan {
+    text-shadow: 0 0 10px #00F2EA, 0 0 20px #00F2EA, 0 0 30px #00F2EA;
+  }
+
+  /* Glittery rainbow effects */
+  .glitter-rainbow {
+    background: linear-gradient(45deg, #FF0050, #FF6B35, #F7931E, #FFD700, #00F2EA, #9B59B6, #FF0050);
+    background-size: 400% 400%;
+    animation: rainbow-glitter 3s ease infinite;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glitter-rainbow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 40%), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes rainbow-glitter {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Sparkle effects */
+  .sparkle-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #FFD700, transparent);
+    border-radius: 50%;
+    animation: sparkle-twinkle 2s infinite;
+    pointer-events: none;
+  }
+
+  @keyframes sparkle-twinkle {
+    0%, 100% { 
+      opacity: 0%; 
+      transform: scale(0); 
+    }
+
+    50% { 
+      opacity: 100%; 
+      transform: scale(1); 
+    }
+  }
+
+  /* Rainbow border animation */
+  .rainbow-border {
+    position: relative;
+    background: linear-gradient(45deg, #FF0050, #FF6B35, #F7931E, #FFD700, #00F2EA, #9B59B6);
+    background-size: 400% 400%;
+    animation: rainbow-border-flow 4s ease infinite;
+    padding: 2px;
+    border-radius: inherit;
+  }
+
+  @keyframes rainbow-border-flow {
+    0% { 
+      background-position: 0% 50%; 
+    }
+
+    50% { 
+      background-position: 100% 50%; 
+    }
+
+    100% { 
+      background-position: 0% 50%; 
+    }
+  }
+
+  /* Holographic effect */
+  .holographic {
+    background: linear-gradient(45deg, 
+      hsl(240deg 100% 50%) 0%,
+      hsl(300deg 100% 50%) 25%,
+      hsl(0deg 100% 50%) 50%,
+      hsl(60deg 100% 50%) 75%,
+      hsl(180deg 100% 50%) 100%
+    );
+    background-size: 200% 200%;
+    animation: holographic-shift 3s ease infinite;
+    filter: brightness(1.2) contrast(1.1);
+  }
+
+  @keyframes holographic-shift {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+
+  /* Glowing particles */
+  .particle-glow {
+    position: relative;
+  }
+
+  .particle-glow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgb(255 215 0 / 30%), transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: particle-pulse 2s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes particle-pulse {
+    0%, 100% { 
+      transform: translate(-50%, -50%) scale(0.8); 
+      opacity: 30%; 
+    }
+
+    50% { 
+      transform: translate(-50%, -50%) scale(1.2); 
+      opacity: 60%; 
+    }
+  }
+
+  /* Modern glass morphism for comments */
+  .comment-glass {
+    background: rgb(255 255 255 / 5%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgb(255 255 255 / 10%);
+    box-shadow: 0 8px 32px rgb(0 0 0 / 30%);
+  }
+
+  /* Floating animation for UI elements */
+  .float-gentle {
+    animation: float-gentle 4s ease-in-out infinite;
+  }
+
+  @keyframes float-gentle {
+    0%, 100% { 
+      transform: translateY(0); 
+    }
+
+    50% { 
+      transform: translateY(-8px); 
+    }
+  }
+
+  /* Prismatic text effect */
+  .prismatic-text {
+    background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #da70d6, #32cd32, #ff69b4);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: prismatic-flow 4s ease infinite;
+    font-weight: bold;
+  }
+
+  @keyframes prismatic-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Interactive elements */
+  .interactive-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .interactive-rotate:hover {
+    transform: rotate(5deg);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Loading animations */
+  .loading-dots::after {
+    content: '';
+    animation: loading-dots 1.5s infinite;
+  }
+
+  @keyframes loading-dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+  }
+}
